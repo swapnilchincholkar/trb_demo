@@ -2,7 +2,7 @@ module User::Operation
   class Index < Trailblazer::Operation
 
     step :fetch_users
-    fail :set_error_message, fail_fast: true
+    fail :set_error_message
 
     def fetch_users(ctx, **)
       ctx[:users] = User.all

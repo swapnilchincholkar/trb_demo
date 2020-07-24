@@ -1,0 +1,26 @@
+diff --git a/app/concepts/user/operation/index.rb b/app/concepts/user/operation/index.rb
+index e0cd863..2d216d6 100644
+--- a/app/concepts/user/operation/index.rb
++++ b/app/concepts/user/operation/index.rb
+@@ -2,7 +2,7 @@ module User::Operation
+   class Index < Trailblazer::Operation
+ 
+     step :fetch_users
+-    fail :set_error_message, fail_fast: true
++    fail :set_error_message
+ 
+     def fetch_users(ctx, **)
+       ctx[:users] = User.all
+diff --git a/app/concepts/user/operation/show.rb b/app/concepts/user/operation/show.rb
+index b3bb3f9..51b0140 100644
+--- a/app/concepts/user/operation/show.rb
++++ b/app/concepts/user/operation/show.rb
+@@ -18,7 +18,7 @@ module User::Operation
+       ctx[:error] = 'User id not recevied in request'
+     end
+ 
+-    def invalid_user_id(ctx, **)
++    def invalid_user_id(ctx, params:, **)
+       ctx[:error] = "User not found with ID #{params[:user_id]}"
+     end
+ 

@@ -18,7 +18,7 @@ module User::Operation
       ctx[:error] = 'User id not recevied in request'
     end
 
-    def invalid_user_id(ctx, **)
+    def invalid_user_id(ctx, params:, **)
       ctx[:error] = "User not found with ID #{params[:user_id]}"
     end
 
